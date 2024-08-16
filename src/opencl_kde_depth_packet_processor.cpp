@@ -259,7 +259,7 @@ public:
     newIrFrame();
     newDepthFrame();
 
-    const int CL_ICDL_VERSION = 2;
+    const int cl_icdl_version = 2;
     typedef cl_int (*icdloader_func)(int, size_t, void*, size_t*);
 #ifdef _MSC_VER
 #pragma warning(push)
@@ -277,7 +277,7 @@ public:
     if (clGetICDLoaderInfoOCLICD != NULL)
     {
       char buf[16];
-      if (clGetICDLoaderInfoOCLICD(CL_ICDL_VERSION, sizeof(buf), buf, NULL) == CL_SUCCESS)
+      if (clGetICDLoaderInfoOCLICD(cl_icdl_version, sizeof(buf), buf, NULL) == CL_SUCCESS)
       {
         if (strcmp(buf, "2.2.4") < 0)
           LOG_WARNING << "Your ocl-icd has deadlock bugs. Update to 2.2.4+ is recommended.";
