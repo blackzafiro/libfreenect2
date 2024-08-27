@@ -1,5 +1,5 @@
-#CMAKE_MINIMUM_REQUIRED(VERSION 2.8.12.1)
-CMAKE_MINIMUM_REQUIRED(VERSION 3.28)
+#CMAKE_MINIMUM_REQUIRED(VERSION 3.28.3)
+CMAKE_MINIMUM_REQUIRED(VERSION 2.8.12.1)
 
 SET(PROJECT_VER_MAJOR 0)
 SET(PROJECT_VER_MINOR 2)
@@ -24,7 +24,6 @@ IF(NOT DEFINED CMAKE_BUILD_TYPE)
 ENDIF()
 
 PROJECT(libfreenect2)
-INCLUDE(CheckLanguage)
 
 IF(POLICY CMP0042)
   cmake_policy(SET CMP0042 NEW)
@@ -129,7 +128,6 @@ SET(SOURCES
   include/libfreenect2/packet_pipeline.h
   include/internal/libfreenect2/packet_processor.h
   include/libfreenect2/registration.h
-  include/libfreenect2/cuda_registration.h
   include/internal/libfreenect2/resource.h
   include/internal/libfreenect2/rgb_packet_processor.h
   include/internal/libfreenect2/rgb_packet_stream_parser.h
@@ -280,7 +278,8 @@ IF(ENABLE_OPENGL)
     LIST(APPEND LIBFREENECT2_DLLS ${GLFW3_DLL})
     LIST(APPEND LIBRARIES
       ${GLFW3_LIBRARIES}
-      ${OPENGL_gl_LIBRARY}
+      ${OPENGL_GL_LIBRARY}
+      ${OPENGL_LIBRARIES}
     )
     LIST(APPEND SOURCES
       src/flextGL.cpp
@@ -343,10 +342,9 @@ ENDIF(ENABLE_OPENCL)
 
 SET(HAVE_CUDA disabled)
 IF(ENABLE_CUDA)
+  INCLUDE(CheckLanguage)
   CHECK_LANGUAGE(CUDA)
-#[[
-  FIND_PACKAGE(CUDA)
-]]
+#  FIND_PACKAGE(CUDA)
   SET(HAVE_CUDA no)
   #IF(CUDA_FOUND AND MSVC14 AND CUDA_VERSION VERSION_LESS 8.0)
   IF(CMAKE_CUDA_COMPILER AND MSVC14 AND CUDA_VERSION VERSION_LESS 8.0)
@@ -355,10 +353,13 @@ IF(ENABLE_CUDA)
   ELSEIF(CMAKE_CUDA_COMPILER)
     SET(LIBFREENECT2_WITH_CUDA_SUPPORT 1)
     SET(HAVE_CUDA yes)
+    ENABLE_LANGUAGE(CUDA)
 
+    #FIND_PACKAGE(CUDAToolkit)
     STRING(REPLACE "\\" "/" NVCUDASAMPLES_ROOT "$ENV{NVCUDASAMPLES_ROOT}")
     STRING(REPLACE "\\" "/" NVCUDASAMPLES8_0_ROOT "$ENV{NVCUDASAMPLES8_0_ROOT}")
-    CUDA_INCLUDE_DIRECTORIES(
+    #CUDA_INCLUDE_DIRECTORIES(
+    INCLUDE_DIRECTORIES(
       "${MY_DIR}/include/"
       "${CUDA_TOOLKIT_ROOT_DIR}/samples/common/inc"
       "${NVCUDASAMPLES_ROOT}/common/inc"
@@ -377,26 +378,33 @@ IF(ENABLE_CUDA)
     # Thrust requires exceptions.  If OpenCL from NVidia is used we don't need this flag.
     STRING(REGEX REPLACE "-fno-exceptions" "" CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}")
     MESSAGE(STATUS "*************")
-    mESSAGE(STATUS ${CMAKE_CXX_FLAGS})
+    MESSAGE(STATUS ${CMAKE_CXX_FLAGS})
     MESSAGE(STATUS ${CUDA_FLAGS})
+    MESSAGE(STATUS ${CUDA_INCLUDE_DIRS})
+    MESSAGE(STATUS ${CUDA_LIBRARIES})
+    MESSAGE(STATUS ${CUDA_OBJECTS})
     MESSAGE(STATUS "*************")
-    CUDA_COMPILE(CUDA_OBJECTS
+    #CUDA_COMPILE(CUDA_OBJECTS
+    LIST(APPEND SOURCES
+      #include/libfreenect2/cuda_registration.h
       src/cuda_depth_packet_processor.cu
       src/cuda_kde_depth_packet_processor.cu
       src/cuda_registration.cu
-      OPTIONS ${CUDA_FLAGS}
+      #OPTIONS ${CUDA_FLAGS}
     )
     SET(CMAKE_CXX_FLAGS "${OLD_CMAKE_CXX_FLAGS}")
 
     INCLUDE_DIRECTORIES(${CUDA_INCLUDE_DIRS})
 
-    LIST(APPEND SOURCES
-      ${CUDA_OBJECTS}
-    )
+    #LIST(APPEND SOURCES
+    #  ${CUDA_OBJECTS}
+    #)
 
-    LIST(APPEND LIBRARIES
-      ${CUDA_LIBRARIES}
-    )
+    #LIST(APPEND LIBRARIES
+    #  ${CUDA_LIBRARIES}
+    #)
+    #set_target_properties(freenect2 PROPERTIES CUDA_ARCHITECTURES "35;50;75")
+    #SET_PROPERTY(TARGET freenect2 PROPERTY CUDA_ARCHITECTURES OFF)
   ENDIF()
   #ENDIF(CMAKE_CUDA_COMPILER)
 ENDIF(ENABLE_CUDA)
