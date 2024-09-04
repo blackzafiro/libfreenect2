@@ -101,9 +101,13 @@ public:
  * Main application entry point.
  *
  * Accepted argumemnts:
- * - cpu Perform depth processing with the CPU.
- * - gl  Perform depth processing with OpenGL.
- * - cl  Perform depth processing with OpenCL.
+ * - cpu        Perform depth processing with the CPU.
+ * - gl         Perform depth processing with OpenGL.
+ * - cl         Perform depth processing with OpenCL.
+ * - clkde
+ * - cuda
+ * - cudakde
+ * - cudaccess  Does not send data to CPU.
  * - <number> Serial number of the device to open.
  * - -noviewer Disable viewer window.
  */
@@ -113,7 +117,7 @@ int main(int argc, char *argv[])
   std::string program_path(argv[0]);
   std::cerr << "Version: " << LIBFREENECT2_VERSION << std::endl;
   std::cerr << "Environment variables: LOGFILE=<protonect.log>" << std::endl;
-  std::cerr << "Usage: " << program_path << " [-gpu=<id>] [gl | cl | clkde | cuda | cudakde | cpu] [<device serial>]" << std::endl;
+  std::cerr << "Usage: " << program_path << " [-gpu=<id>] [gl | cl | clkde | cuda | cudakde | cudaccess | cpu] [<device serial>]" << std::endl;
   std::cerr << "        [-noviewer] [-norgb | -nodepth] [-help] [-version]" << std::endl;
   std::cerr << "        [-frames <number of frames to process>]" << std::endl;
   std::cerr << "To pause and unpause: pkill -USR1 Protonect" << std::endl;
@@ -223,6 +227,15 @@ int main(int argc, char *argv[])
 #ifdef LIBFREENECT2_WITH_CUDA_SUPPORT
       if(!pipeline)
         pipeline = new libfreenect2::CudaKdePacketPipeline(deviceId);
+#else
+      std::cout << "CUDA pipeline is not supported!" << std::endl;
+#endif
+    }
+    else if(arg == "cudaccess")
+    {
+#ifdef LIBFREENECT2_WITH_CUDA_SUPPORT
+      if(!pipeline)
+        pipeline = new libfreenect2::CudaAccessPacketPipeline(deviceId);
 #else
       std::cout << "CUDA pipeline is not supported!" << std::endl;
 #endif
