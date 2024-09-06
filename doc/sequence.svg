@@ -25,8 +25,8 @@
      inkscape:document-units="mm"
      showgrid="true"
      inkscape:zoom="2.0838024"
-     inkscape:cx="262.021"
-     inkscape:cy="171.56137"
+     inkscape:cx="532.68007"
+     inkscape:cy="172.04126"
      inkscape:window-width="1920"
      inkscape:window-height="1008"
      inkscape:window-x="0"
@@ -41,7 +41,7 @@
      id="defs2">
     <marker
        style="overflow:visible"
-       id="Arrow1L"
+       id="marker22339"
        refX="0"
        refY="0"
        orient="auto-start-reverse"
@@ -55,9 +55,34 @@
       <path
          style="fill:context-stroke;fill-rule:evenodd;stroke:none"
          d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path22337"
+         transform="scale(-0.5)" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="Arrow1L"
+       refX="0"
+       refY="0"
+       orient="auto-start-reverse"
+       inkscape:stockid="Arrow1L"
+       markerWidth="7"
+       markerHeight="4"
+       viewBox="0 0 8.75 5"
+       inkscape:isstock="true"
+       inkscape:collect="always"
+       preserveAspectRatio="xMidYMid">
+      <path
+         style="fill:context-stroke;fill-rule:evenodd;stroke:none"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
          id="arrow1L"
          transform="scale(-0.5)" />
     </marker>
+    <rect
+       x="25"
+       y="105"
+       width="190"
+       height="120"
+       id="rect6525" />
   </defs>
   <g
      inkscape:label="Capa 1"
@@ -65,62 +90,211 @@
      id="layer1">
     <text
        xml:space="preserve"
+       style="font-size:3.175px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.665001;stroke-opacity:0.929412"
+       x="6.6145835"
+       y="38.364582"
+       id="text9694"><tspan
+         sodipodi:role="line"
+         id="tspan9692"
+         style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.665;stroke-opacity:0.929412"
+         x="6.6145835"
+         y="38.364582">  libfreenect2::Freenect2 freenect2;</tspan><tspan
+         sodipodi:role="line"
+         style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.665;stroke-opacity:0.929412"
+         x="6.6145835"
+         y="42.333332"
+         id="tspan9696">  libfreenect2::Freenect2Device *dev = 0;</tspan><tspan
+         sodipodi:role="line"
+         style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.665;stroke-opacity:0.929412"
+         x="6.6145835"
+         y="46.302082"
+         id="tspan9698">  libfreenect2::PacketPipeline *pipeline = 0;</tspan></text>
+    <rect
+       style="fill:none;stroke:#ffcc00;stroke-width:0.665001"
+       id="rect865"
+       width="71.4375"
+       height="76.729164"
+       x="2.6458333"
+       y="3.96875"
+       ry="1.3229179" />
+    <rect
+       style="fill:none;stroke:#2ca02c;stroke-width:0.665001"
+       id="rect6587"
+       width="63.5"
+       height="50.270832"
+       x="6.614583"
+       y="27.78125"
+       ry="1.3229179" />
+    <text
+       xml:space="preserve"
        style="font-size:3.175px;fill:#000000;stroke-width:0.264583"
-       x="15.567025"
-       y="21.134916"
+       x="3.6607749"
+       y="8.4984169"
        id="text113"><tspan
          sodipodi:role="line"
          id="tspan111"
          style="stroke-width:0.264583"
-         x="15.567025"
-         y="21.134916">Protonect</tspan></text>
+         x="3.6607749"
+         y="8.4984169">Protonect.cpp</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:3.175px;fill:#000000;stroke-width:0.264583"
-       x="23.542625"
-       y="28.798307"
+       x="8.9905415"
+       y="31.71825"
        id="text117"><tspan
          sodipodi:role="line"
          id="tspan115"
          style="stroke-width:0.264583"
-         x="23.542625"
-         y="28.798307">main</tspan></text>
+         x="8.9905415"
+         y="31.71825">main</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:3.175px;fill:#000000;stroke-width:0.264583"
-       x="29.104166"
-       y="34.395832"
-       id="text256"><tspan
-         sodipodi:role="line"
-         id="tspan254"
-         style="stroke-width:0.264583"
-         x="29.104166"
-         y="34.395832">freenect2</tspan><tspan
-         sodipodi:role="line"
-         style="stroke-width:0.264583"
-         x="29.104166"
-         y="38.364582"
-         id="tspan258">*dev = 0</tspan><tspan
-         sodipodi:role="line"
-         style="stroke-width:0.264583"
-         x="29.104166"
-         y="42.333332"
-         id="tspan260">*pipeline = 0</tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-size:3.175px;fill:#000000;stroke-width:0.264583"
-       x="68.791664"
-       y="42.333332"
+       x="83.073875"
+       y="45.540085"
        id="text264"><tspan
          sodipodi:role="line"
          id="tspan262"
          style="stroke-width:0.264583"
-         x="68.791664"
-         y="42.333332">libfreenect2::CudaAccessPacketPipeline(deviceId)</tspan></text>
+         x="83.073875"
+         y="45.540085">libfreenect2::CudaAccessPacketPipeline(deviceId)</tspan></text>
     <path
-       style="fill:#000000;stroke:#000000;stroke-width:0.665;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#Arrow1L)"
-       d="m 52.916666,41.010416 9.260417,10e-7"
+       style="fill:#000000;stroke:#000000;stroke-width:0.365;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#Arrow1L)"
+       d="m 71.4375,44.979167 6.614583,0"
        id="path320"
        sodipodi:nodetypes="cc" />
+    <text
+       xml:space="preserve"
+       style="font-size:3.175px;fill:#000000;stroke:none;stroke-width:0.665001"
+       x="6.3447084"
+       y="16.980959"
+       id="text4045"><tspan
+         sodipodi:role="line"
+         id="tspan4043"
+         style="fill:#000000;stroke:none;stroke-width:0.665"
+         x="6.3447084"
+         y="16.980959">bool protonect_shutdown = false;</tspan><tspan
+         sodipodi:role="line"
+         style="fill:#000000;stroke:none;stroke-width:0.665"
+         x="6.3447084"
+         y="20.949709"
+         id="tspan4887">bool protonect_paused = false;</tspan><tspan
+         sodipodi:role="line"
+         style="fill:#000000;stroke:none;stroke-width:0.665"
+         x="6.3447084"
+         y="24.918459"
+         id="tspan5629">libfreenect2::Freenect2Device *devtopause;</tspan><tspan
+         sodipodi:role="line"
+         style="fill:#000000;stroke:none;stroke-width:0.665"
+         x="6.3447084"
+         y="28.887209"
+         id="tspan4889" /></text>
+    <text
+       xml:space="preserve"
+       transform="scale(0.26458333)"
+       id="text6523"
+       style="white-space:pre;shape-inside:url(#rect6525);display:inline;fill:#2ca02c;stroke:#2ca02c;stroke-width:2.51339" />
+    <path
+       style="fill:none;stroke:#ffcc00;stroke-width:0.665001;stroke-opacity:0.752941"
+       d="m 2.6458333,10.583333 72.7604167,0"
+       id="path6786"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:none;stroke:#2ca02c;stroke-width:0.665001;stroke-opacity:1"
+       d="m 6.6145832,33.072916 63.4999998,10e-7"
+       id="path7256"
+       sodipodi:nodetypes="cc" />
+    <text
+       xml:space="preserve"
+       style="font-size:3.175px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.365001;stroke-dasharray:none;stroke-opacity:0.929412"
+       x="6.6145835"
+       y="51.59375"
+       id="text13099"><tspan
+         sodipodi:role="line"
+         id="tspan13097"
+         style="stroke-width:0.365"
+         x="6.6145835"
+         y="51.59375">  std::string serial = &quot;&quot;;</tspan><tspan
+         sodipodi:role="line"
+         style="stroke-width:0.365"
+         x="6.6145835"
+         y="55.5625"
+         id="tspan13101"></tspan><tspan
+         sodipodi:role="line"
+         style="stroke-width:0.365"
+         x="6.6145835"
+         y="59.53125"
+         id="tspan13103">  bool viewer_enabled = true;</tspan><tspan
+         sodipodi:role="line"
+         style="stroke-width:0.365"
+         x="6.6145835"
+         y="63.5"
+         id="tspan13105">  bool enable_rgb = true;</tspan><tspan
+         sodipodi:role="line"
+         style="stroke-width:0.365"
+         x="6.6145835"
+         y="67.46875"
+         id="tspan13107">  bool enable_depth = true;</tspan><tspan
+         sodipodi:role="line"
+         style="stroke-width:0.365"
+         x="6.6145835"
+         y="71.4375"
+         id="tspan13109">  int deviceId = -1;</tspan><tspan
+         sodipodi:role="line"
+         style="stroke-width:0.365"
+         x="6.6145835"
+         y="75.40625"
+         id="tspan13111">  size_t framemax = -1;</tspan></text>
+    <path
+       style="fill:#000000;stroke:#000000;stroke-width:0.365;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#Arrow1L)"
+       d="M 41.010417,50.270833 H 78.052083"
+       id="path16211"
+       sodipodi:nodetypes="cc" />
+    <text
+       xml:space="preserve"
+       style="font-size:3.175px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.365001;stroke-dasharray:none;stroke-opacity:0.929412"
+       x="83.34375"
+       y="51.59375"
+       id="text16959"><tspan
+         sodipodi:role="line"
+         id="tspan16957"
+         style="stroke-width:0.365"
+         x="83.34375"
+         y="51.59375">freenect2.getDefaultDeviceSerialNumber();</tspan></text>
+    <path
+       style="fill:#000000;stroke:#000000;stroke-width:0.365;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#Arrow1L)"
+       d="m 67.46875,41.010417 h 93.92708"
+       id="path21434"
+       sodipodi:nodetypes="cc" />
+    <text
+       xml:space="preserve"
+       style="font-size:3.175px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.365001;stroke-dasharray:none;stroke-opacity:0.929412"
+       x="165.36458"
+       y="42.333332"
+       id="text22182"><tspan
+         sodipodi:role="line"
+         id="tspan22180"
+         style="stroke-width:0.365"
+         x="165.36458"
+         y="42.333332">freenect2.openDevice(serial, pipeline);</tspan></text>
+    <path
+       style="fill:#000000;stroke:#000000;stroke-width:0.365;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#Arrow1L)"
+       d="m 71.4375,44.979167 6.614583,0"
+       id="path22230"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker22339)"
+       d="m 157.42708,44.979166 56.88542,10e-7 V 43.65625"
+       id="path22335"
+       inkscape:connector-type="polyline"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccc" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker22339)"
+       d="m 148.16974,50.138578 55.55943,0.132255 V 43.65625"
+       id="path22419"
+       inkscape:connector-type="polyline"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccc" />
   </g>
 </svg>
