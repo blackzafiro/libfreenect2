@@ -26,7 +26,7 @@
 
 /** @file Implementation of merging depth and color images using cuda. */
 
-#include <libfreenect2/cuda_registration.h>
+#include <libfreenect2/registration.h>
 #include "libfreenect2/logging.h"
 #include <limits>
 
@@ -293,6 +293,18 @@ CudaDeviceFrame::~CudaDeviceFrame()
 bool CudaDeviceFrame::allocateMemory()
 {
   CHECK_CUDA(cudaMalloc(&data, width * height * bytes_per_pixel * sizeof(unsigned char)));
+
+  cudaDeviceSynchronize();
+
+  CHECK_CUDA(cudaGetLastError());
+  return true;
+}
+
+bool CudaDeviceFrame::toHostFrame(Frame& frame)
+{
+  size_t frame_size = frame.width * frame.height * frame.bytes_per_pixel;
+
+  cudaMemcpyAsync(data, frame.data, frame_size, cudaMemcpyDeviceToHost);
 
   cudaDeviceSynchronize();
 

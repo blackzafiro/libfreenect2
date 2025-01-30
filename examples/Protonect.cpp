@@ -160,6 +160,7 @@ int main(int argc, char *argv[])
   bool enable_depth = true;
   int deviceId = -1;
   size_t framemax = -1;
+  bool use_cuda_registration = false;
 
   for(int argI = 1; argI < argc; ++argI)
   {
@@ -234,8 +235,10 @@ int main(int argc, char *argv[])
     else if(arg == "cudaccess")
     {
 #ifdef LIBFREENECT2_WITH_CUDA_SUPPORT
+      use_cuda_registration = true;
       if(!pipeline)
-        pipeline = new libfreenect2::CudaAccessPacketPipeline(deviceId);
+        //pipeline = new libfreenect2::CudaAccessPacketPipeline(deviceId);
+        pipeline = new libfreenect2::CudaPacketPipeline(deviceId);
 #else
       std::cout << "CUDA pipeline is not supported!" << std::endl;
 #endif
@@ -347,6 +350,18 @@ int main(int argc, char *argv[])
 /// [registration setup]
   libfreenect2::Registration* registration = new libfreenect2::Registration(dev->getIrCameraParams(), dev->getColorCameraParams());
   libfreenect2::Frame undistorted(512, 424, 4), registered(512, 424, 4);
+
+#ifdef LIBFREENECT2_WITH_CUDA_SUPPORT
+  libfreenect2::CudaRegistration* cudaRegistration = NULL;
+  libfreenect2::CudaDeviceFrame device_undistorted(512, 424, 4), device_registered(512, 424, 4);
+
+  if(use_cuda_registration)
+  {
+    registration = NULL;
+    libfreenect2::CudaRegistration* cudaRegistration = new libfreenect2::CudaRegistration(dev->getIrCameraParams(), dev->getColorCameraParams());
+  }
+#endif
+
 /// [registration setup]
 
   size_t framecount = 0;
@@ -361,7 +376,7 @@ int main(int argc, char *argv[])
 /// [loop start]
   while(!protonect_shutdown && (framemax == (size_t)-1 || framecount < framemax))
   {
-    if (!listener.waitForNewFrame(frames, 10*1000)) // 10 sconds
+    if (!listener.waitForNewFrame(frames, 10*1000)) // 10 sconds   // CUDA: Wait! Don't we need them in cuda???
     {
       std::cout << "timeout!" << std::endl;
       return -1;
@@ -374,7 +389,14 @@ int main(int argc, char *argv[])
     if (enable_rgb && enable_depth)
     {
 /// [registration]
-      registration->apply(rgb, depth, &undistorted, &registered);
+      if(use_cuda_registration)
+      {
+        cudaRegistration->apply(rgb, depth, &device_undistorted, &device_registered);
+      }
+      else
+      {
+        registration->apply(rgb, depth, &undistorted, &registered);
+      }
 /// [registration]
     }
 
@@ -399,6 +421,12 @@ int main(int argc, char *argv[])
     }
     if (enable_rgb && enable_depth)
     {
+#ifdef LIBFREENECT2_WITH_CUDA_SUPPORT
+      if (use_cuda_registration)
+      {
+        device_registered.toHostFrame(registered);
+      }
+#endif
       viewer.addFrame("registered", &registered);
     }
 
@@ -417,8 +445,16 @@ int main(int argc, char *argv[])
   dev->stop();
   dev->close();
 /// [stop]
-
-  delete registration;
+#ifdef LIBFREENECT2_WITH_CUDA_SUPPORT
+  if (use_cuda_registration)
+  {
+    delete cudaRegistration;
+  }
+#endif
+  if (registration)
+  {
+    delete registration;
+  }
 
   return 0;
 }
