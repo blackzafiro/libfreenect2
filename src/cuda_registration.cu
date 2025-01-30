@@ -292,23 +292,43 @@ CudaDeviceFrame::~CudaDeviceFrame()
 
 bool CudaDeviceFrame::allocateMemory()
 {
+  LOG_ERROR << "Alloc " << sizeof(unsigned char) << std::endl;
   CHECK_CUDA(cudaMalloc(&data, width * height * bytes_per_pixel * sizeof(unsigned char)));
+  //CHECK_CUDA(cudaMalloc(&data, width * height * bytes_per_pixel));
 
   cudaDeviceSynchronize();
 
   CHECK_CUDA(cudaGetLastError());
+  LOG_ERROR << "Alloced " << sizeof(unsigned char) << std::endl;
   return true;
 }
 
 bool CudaDeviceFrame::toHostFrame(Frame& frame)
 {
-  size_t frame_size = frame.width * frame.height * frame.bytes_per_pixel;
+  LOG_ERROR << "Copy " << frame.bytes_per_pixel << " what happened to data?" << std::endl;
+  /*size_t frame_size = width * height * bytes_per_pixel * sizeof(unsigned char);*/
+  size_t frame_size = width * height * bytes_per_pixel;
 
   cudaMemcpyAsync(data, frame.data, frame_size, cudaMemcpyDeviceToHost);
 
   cudaDeviceSynchronize();
 
   CHECK_CUDA(cudaGetLastError());
+  /* Fill with horizontal gray stripes */
+  /*
+  for(int c = 0; c < 4; c++)
+  {
+    for(int i = 0; i < width; i++)
+    {
+      for(int j = 0; j < height; j++)
+      {
+        frame.data[(i * height + j) * sizeof(unsigned char) + 
+            c * (height * width)] = 20 * c;
+      }
+    }
+  }
+  */
+ LOG_ERROR << "Copied " << sizeof(unsigned char) << std::endl;
   return true;
 }
 

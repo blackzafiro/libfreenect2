@@ -358,7 +358,7 @@ int main(int argc, char *argv[])
   if(use_cuda_registration)
   {
     registration = NULL;
-    libfreenect2::CudaRegistration* cudaRegistration = new libfreenect2::CudaRegistration(dev->getIrCameraParams(), dev->getColorCameraParams());
+    cudaRegistration = new libfreenect2::CudaRegistration(dev->getIrCameraParams(), dev->getColorCameraParams());
   }
 #endif
 
