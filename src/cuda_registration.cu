@@ -288,18 +288,18 @@ CudaDeviceFrame::CudaDeviceFrame(size_t width, size_t height, size_t bytes_per_p
 CudaDeviceFrame::~CudaDeviceFrame()
 {
   CALL_CUDA(cudaFree(data));
+  data = NULL;
 }
 
 bool CudaDeviceFrame::allocateMemory()
 {
-  LOG_ERROR << "Alloc " << sizeof(unsigned char) << std::endl;
-  CHECK_CUDA(cudaMalloc(&data, width * height * bytes_per_pixel * sizeof(unsigned char)));
-  //CHECK_CUDA(cudaMalloc(&data, width * height * bytes_per_pixel));
+  //LOG_ERROR << "Alloc " << sizeof(unsigned char) << std::endl;
+  CHECK_CUDA(cudaMalloc(&data, width * height * bytes_per_pixel * sizeof(unsigned char)));  // sizeof(unsigned char) is 1
 
   cudaDeviceSynchronize();
 
   CHECK_CUDA(cudaGetLastError());
-  LOG_ERROR << "Alloced " << sizeof(unsigned char) << std::endl;
+  //LOG_ERROR << "Alloced " << sizeof(unsigned char) << std::endl;
   return true;
 }
 
