@@ -24,9 +24,9 @@
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="mm"
      showgrid="true"
-     inkscape:zoom="1.4734708"
-     inkscape:cx="436.72396"
-     inkscape:cy="563.29586"
+     inkscape:zoom="2.0838024"
+     inkscape:cx="375.99535"
+     inkscape:cy="126.21158"
      inkscape:window-width="1920"
      inkscape:window-height="1044"
      inkscape:window-x="1920"
@@ -217,12 +217,12 @@
        style="white-space:pre;shape-inside:url(#rect6525);display:inline;fill:#2ca02c;stroke:#2ca02c;stroke-width:2.51339" />
     <path
        style="fill:none;stroke:#ffcc00;stroke-width:0.665001;stroke-opacity:0.752941"
-       d="m 2.6458333,10.583333 72.7604167,0"
+       d="m 2.6458333,10.583333 76.7291667,0"
        id="path6786"
        sodipodi:nodetypes="cc" />
     <path
        style="fill:none;stroke:#2ca02c;stroke-width:0.665001;stroke-opacity:1"
-       d="m 6.6145832,33.072916 63.4999998,10e-7"
+       d="m 6.6145832,33.072916 70.1145838,10e-7"
        id="path7256"
        sodipodi:nodetypes="cc" />
     <text
@@ -373,13 +373,13 @@
        xml:space="preserve"
        style="font-size:3.175px;fill:#000000;stroke-width:0.365001;stroke-opacity:0.929412"
        x="21.166666"
-       y="140.22917"
+       y="141.28749"
        id="text11199"><tspan
          sodipodi:role="line"
          id="tspan11197"
          style="stroke-width:0.365"
          x="21.166666"
-         y="140.22917">setColorFrameListener(&amp;listener)</tspan></text>
+         y="141.28749">setColorFrameListener(&amp;listener)</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:3.175px;fill:#000000;stroke-width:0.365001;stroke-opacity:0.929412"
@@ -405,7 +405,7 @@
        ry="1.3229179" />
     <path
        style="fill:#000000;stroke:#000000;stroke-width:0.365;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#Arrow1L)"
-       d="m 15.08125,139.7 h 3.439583"
+       d="m 15.08125,140.22917 h 3.439583"
        id="path13817"
        sodipodi:nodetypes="cc" />
     <path
@@ -738,5 +738,28 @@
        d="m 153.72293,186.26669 h 3.43958"
        id="path1462"
        sodipodi:nodetypes="cc" />
+    <text
+       xml:space="preserve"
+       style="font-size:3.175px;fill:#000000;stroke-width:0.365001;stroke-opacity:0.929412"
+       x="21.166666"
+       y="134.93753"
+       id="text425"><tspan
+         sodipodi:role="line"
+         id="tspan423"
+         style="stroke-width:0.365"
+         x="21.166666"
+         y="134.93753">freenect2.openDevice(serial, pipeline);</tspan></text>
+    <path
+       style="fill:#000000;stroke:#000000;stroke-width:0.365;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#Arrow1L)"
+       d="m 15.08125,133.87913 h 3.439583"
+       id="path427"
+       sodipodi:nodetypes="cc" />
+    <rect
+       style="fill:#d5f6ff;fill-opacity:1;stroke:#000000;stroke-width:0.55;stroke-opacity:1;paint-order:markers fill stroke"
+       id="rect7553"
+       width="2.6458333"
+       height="34.395832"
+       x="11.90625"
+       y="133.61458" />
   </g>
 </svg>
