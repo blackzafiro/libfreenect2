@@ -389,14 +389,18 @@ int main(int argc, char *argv[])
     if (enable_rgb && enable_depth)
     {
 /// [registration]
+#ifdef LIBFREENECT2_WITH_CUDA_SUPPORT
       if(use_cuda_registration)
       {
         cudaRegistration->apply(rgb, depth, &device_undistorted, &device_registered);
       }
       else
       {
+#endif
         registration->apply(rgb, depth, &undistorted, &registered);
+#ifdef LIBFREENECT2_WITH_CUDA_SUPPORT
       }
+#endif
 /// [registration]
     }
 
