@@ -4,11 +4,13 @@
 * Edit ```CMakeLists.txt``` to assign ```CMAKE_CUDA_ARCHITECTURES``` in accordance with NVidia card.
 
 ```
+cd
 mkdir Programs && cd Programs
 git clone https://github.com/NVIDIA/cuda-samples.git
-export CUDA_SAMPLES_HOME=./cuda-samples
+export CUDA_SAMPLES_HOME=$HOME/Programs/cuda-samples
 
-cd ~/Programs/
+git clone https://github.com/blackzafiro/libfreenect2.git
+cd ~/Programs/libfreenect2
 mkdir buildcudadev && cd buildcudadev
 cmake .. -DCMAKE_CUDA_FLAGS=-I\ $CUDA_SAMPLES_HOME/Common -DCMAKE_INSTALL_PREFIX=$HOME/freenect2cudadev
 ```
