@@ -15,6 +15,11 @@ mkdir buildcudadev && cd buildcudadev
 cmake .. -DCMAKE_CUDA_FLAGS=-I\ $CUDA_SAMPLES_HOME/Common -DCMAKE_INSTALL_PREFIX=$HOME/freenect2cudadev
 ```
 
+Para la Lenovo ideapad Y700 hay que apagar VAAPI:
+```
+cmake .. -DENABLE_VAAPPI=OFF -DCMAKE_CUDA_FLAGS=-I\ $CUDA_SAMPLES_HOME/Common -DCMAKE_INSTALL_PREFIX=$HOME/freenect2cudadev
+```
+
 To find the libraries:
 
 ```
